@@ -26,28 +26,31 @@
 			},
 			login:function(){
 				let that=this
-				uni.login({
-					provider:"weixin",
-					success:function(resp){
-						let code=resp.code
-						that.ajax(that.url.login,"POST",{"code":code},function(resp){
-							let permission=resp.data.permission
-							uni.setStorageSync("permission",permission)
-							//跳转到登陆页面
-							// uni.switchTab({
-							// 	url:"../index/index"
-							// })	
-							console.log("success")
-						})			
+				uni.switchTab({
+				 				url:"../index/index"
+				 			})	
+				// uni.login({
+				// 	provider:"weixin",
+				// 	success:function(resp){
+				// 		let code=resp.code
+				// 		that.ajax(that.url.login,"POST",{"code":code},function(resp){
+				// 			let permission=resp.data.permission
+				// 			uni.setStorageSync("permission",permission)
+				// 			//跳转到登陆页面
+				// 			uni.switchTab({
+				// 				url:"../index/index"
+				// 			})	
+				// 			console.log("success")
+				// 		})			
 						
-					},
-					fail:function(e){
-						uni.showToast({
-							icon:"none",
-							title:"执行异常"
-						})
-					}
-				})
+				// 	},
+				// 	fail:function(e){
+				// 		uni.showToast({
+				// 			icon:"none",
+				// 			title:"执行异常"
+				// 		})
+				// 	}
+				// })
 			}
 			
 		}

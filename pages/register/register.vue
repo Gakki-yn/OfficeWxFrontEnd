@@ -57,9 +57,9 @@ export default {
 									uni.setStorageSync("permission",permission)
 									console.log(permission)
 									//跳转到index页面
-									// uni.switchTab({
-									// 	url:"../index/index"
-									// })
+									uni.switchTab({
+										url:"../index/index"
+									})
 								})							
 						}
 					})
