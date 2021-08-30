@@ -29,7 +29,7 @@
 		</view>
 		<view class="nav-container">
 			<view class="nav-row">
-				<view class="nav">
+				<view class="nav" @tap="toPage('在线签到','../checkin/checkin')" >
 					<image mode="widthFix" src="../../static/nav-1.png" class="icon"></image>
 					<text class="name">在线签到</text>
 				</view>
@@ -87,7 +87,24 @@
 </template>
 
 <script>
-	
+	export default {
+		data() {
+			return {
+				unreadRows:0
+			}
+		},
+		onLoad() {
+			
+		},
+		methods:{
+			toPage:function(name,url){
+				console.log(name)
+				uni.navigateTo({
+					url:url
+				})
+			}
+		}
+}
 </script>
 
 <style lang="less">
