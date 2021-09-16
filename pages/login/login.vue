@@ -26,33 +26,39 @@
 			},
 			login:function(){
 				let that=this
-				uni.switchTab({
-				 				url:"../index/index"
-				 			})	
-				// uni.login({
-				// 	provider:"weixin",
-				// 	success:function(resp){
-				// 		let code=resp.code
-				// 		that.ajax(that.url.login,"POST",{"code":code},function(resp){
-				// 			let permission=resp.data.permission
-				// 			uni.setStorageSync("permission",permission)
-				// 			//跳转到登陆页面
-				// 			uni.switchTab({
-				// 				url:"../index/index"
-				// 			})	
-				// 			console.log("success")
-				// 		})			
+				uni.login({
+					provider:"weixin",
+					success:function(resp){
+						let code=resp.code
+						console.log(that.url.login)
+						 that.ajax(that.url.login,"POST",{"code":code},function(resp){
+							// uni.request({
+							// 	"url": 'http://192.168.137.1:8080/emos-wx-api/user/login',
+							// 	"method": 'POST',
+							// 	"header": {
+							// 		token: uni.getStorageSync("token")
+							// 	},
+							// 	"data": {"code":code},
+							// success: function(resp) {
+							let permission=resp.data.permission
+							uni.setStorageSync("permission",permission)
+							//跳转到登陆页面
+							uni.switchTab({
+								url:"../index/index"
+							})
+							// }
+						 })
 						
-				// 	},
-				// 	fail:function(e){
-				// 		uni.showToast({
-				// 			icon:"none",
-				// 			title:"执行异常"
-				// 		})
-				// 	}
-				// })
+						
+					},
+					fail:function(e){
+						uni.showToast({
+							icon:"none",
+							title:"执行异常"
+						})
+					}
+				})
 			}
-			
 		}
 	}
 </script>
